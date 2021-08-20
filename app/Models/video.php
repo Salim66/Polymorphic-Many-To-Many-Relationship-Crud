@@ -11,4 +11,8 @@ class video extends Model
 
     protected $guarded = [];
 
+    public function tags(){
+        return $this->morphToMany('App\Models\Tag', 'taggable');
+    }
+
 }
