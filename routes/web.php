@@ -38,3 +38,33 @@ Route::get('/create', function(){
     $video->tags()->save($tag2);
 
 });
+
+
+Route::get('/read', function(){
+
+    $post = Post::findOrFail(4);
+    foreach($post->tags as $tag){
+        echo $tag->name;
+    }
+
+});
+
+// many way to update
+Route::get('/update', function(){
+
+    // $post = Post::findOrFail(4);
+    // foreach($post->tags as $tag){
+    //     return $tag->whereId(1)->update(['name'=>'Khaladhula']);
+    // }
+
+
+        $post = Post::findOrFail(4);
+        $tag = Tag::findOrFail(2);
+
+        // $post->tags()->save($tag);
+
+        // $post->tags()->attach(1);
+
+        $post->tags()->sync(2);
+
+});
